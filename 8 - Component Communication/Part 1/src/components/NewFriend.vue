@@ -35,6 +35,7 @@ export default {
         email: this.email,
         name: this.name,
       };
+
       this.$emit("add-contact", details);
       this.phone = "";
       this.email = "";

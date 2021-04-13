@@ -10,6 +10,7 @@
         :key="friend.id"
         :friend-details="friend"
         @toggle-favourite="toggleFavouriteStatus"
+        @delete-friend="deleteFriendById"
       />
     </ul>
   </section>
@@ -50,9 +51,12 @@ export default {
       currentFriend.isFavourite = ! currentFriend.isFavourite;
     },
     addFriend(details){
-      details.id = details.name.split(' ')[0].toLowerCase();
+      details.id = new Date().toISOString();
       details.isFavourite = false;
       this.friends.push(details);
+    },
+    deleteFriendById(friendId) {
+      this.friends = this.friends.filter( (friend) => friend.id !== friendId);
     }
   },
 };
